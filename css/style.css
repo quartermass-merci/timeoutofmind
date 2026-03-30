@@ -777,6 +777,29 @@ h2, h3, .nav-logo {
   color: var(--ash);
 }
 
+.email-standout {
+  margin-top: clamp(24px, 3vw, 40px);
+  margin-bottom: 8px;
+  column-span: all;
+}
+
+.email-standout a {
+  font-family: 'Special Elite', monospace;
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  color: var(--amber);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border-bottom: 2px solid var(--amber);
+  padding-bottom: 3px;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.email-standout a:hover {
+  color: var(--sunset-coral);
+  border-color: var(--sunset-coral);
+}
+
 .cta-link {
   font-family: 'Courier Prime', monospace;
   color: var(--amber);
