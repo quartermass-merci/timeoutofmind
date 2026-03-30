@@ -6,11 +6,12 @@
   <title>Time Out Of Mind Recording Co. | Essex County, Ontario</title>
   <meta name="description" content="Analog recording studio in a 100-year old barn in Essex County, Ontario. 2500 sq ft of creative space with vintage Allen & Heath ML4000 console.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preload" as="image" href="img/hero.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
 
@@ -48,7 +49,7 @@
 
   <!-- Hero: Full-bleed barn photo with baked-in logo -->
   <section id="hero" class="section-hero">
-    <img src="PROMO/PHOTOS/EXTERIOR/hero-logo-barn.png" alt="Time Out Of Mind Recording Co. — the barn at sunset" class="hero-bg">
+    <img src="img/hero.jpg" alt="Time Out Of Mind Recording Co. — the barn at sunset" class="hero-bg" width="1400" height="787" fetchpriority="high">
     <div class="scroll-indicator"><span>&darr;</span></div>
   </section>
 
@@ -67,7 +68,7 @@
 
   <!-- Full-bleed photo break: Live Room -->
   <div class="photo-break">
-    <img src="PROMO/PHOTOS/LOUNGE/Lounge7.jpeg" alt="The lounge" loading="lazy">
+    <img src="img/lounge7.jpg" alt="The lounge" loading="lazy" width="1200" height="900">
   </div>
 
   <!-- Listen -->
@@ -128,7 +129,7 @@
       <h2 class="section-title">Watch</h2>
       <div class="video-item">
         <div class="video-embed">
-          <iframe src="https://www.youtube.com/embed/apJnJfAu3ag?si=xRZQie2EanTtI1TA" title="The Brandy Alexanders - Live at TOOMRC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+          <iframe src="https://www.youtube.com/embed/apJnJfAu3ag?si=xRZQie2EanTtI1TA" title="The Brandy Alexanders - Live at TOOMRC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy" style="aspect-ratio:16/9"></iframe>
         </div>
         <p class="video-caption">The Brandy Alexanders &mdash; Live at Time Out Of Mind Recording Co.</p>
       </div>
@@ -139,20 +140,22 @@
   <section id="about" class="section-light">
     <div class="container">
       <h2 class="section-title">Who We Are</h2>
-      <div class="about-photo-wide">
-        <img src="PROMO/PHOTOS/EXTERIOR/Ext9.JPG" alt="Facilities manager on patrol" loading="lazy">
-      </div>
-      <div class="about-columns">
-        <p>Time Out Of Mind Recording Co. began in fall of 2025 when Sheila Roberts and Eamon McGrath of Cassettes Records partnered with Warren Rutgers of 14th Coffee Co. to bring an analog state of mind, way of working, and mode of being to Essex County.</p>
-        <p>Like an extension of the legendary shows the team was producing in the 100-year old barn located on the 14th Coffee Co. property, Time Out Of Mind formed naturally as more and more bands asked about recording in the remote, secluded and hushed-about space.</p>
-        <p>Now the team boasts 2000 sq. ft. of room, all equipped to be used for tracking and production 24-hours a day from the hearth of the fire: a vintage Allen &amp; Heath ML4000 console.</p>
+      <div class="about-split">
+        <div class="about-text">
+          <p>Time Out Of Mind Recording Co. began in fall of 2025 when Sheila Roberts and Eamon McGrath of Cassettes Records partnered with Warren Rutgers of 14th Coffee Co. to bring an analog state of mind, way of working, and mode of being to Essex County.</p>
+          <p>Like an extension of the legendary shows the team was producing in the 100-year old barn located on the 14th Coffee Co. property, Time Out Of Mind formed naturally as more and more bands asked about recording in the remote, secluded and hushed-about space.</p>
+          <p>Now the team boasts 2000 sq. ft. of room, all equipped to be used for tracking and production 24-hours a day from the hearth of the fire: a vintage Allen &amp; Heath ML4000 console.</p>
+        </div>
+        <div class="about-photo">
+          <img src="img/ext9.jpg" alt="Facilities manager on patrol" loading="lazy" width="800" height="800">
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Full-bleed photo break: Sunset -->
   <div class="photo-break photo-break-short">
-    <img src="PROMO/PHOTOS/EXTERIOR/Ext19.JPG" alt="Essex County sunset" loading="lazy">
+    <img src="img/ext19.jpg" alt="Essex County sunset" loading="lazy" width="1200" height="541">
   </div>
 
   <!-- Rates -->
@@ -228,77 +231,78 @@
       <h2 class="section-title section-title-light">Gear</h2>
     </div>
 
-    <div class="gear-hero">
-      <img src="PROMO/PHOTOS/CONTROL ROOM/ControlRoom3.JPG" alt="The control room at Time Out of Mind" loading="lazy">
-    </div>
+    <div class="gear-split">
+      <div class="gear-photo">
+        <img src="img/controlroom3.jpg" alt="The control room at Time Out of Mind" loading="lazy" width="600" height="800">
+      </div>
+      <div class="gear-lists">
+        <div class="gear-grid">
+          <div class="gear-category">
+            <h3>Mics</h3>
+            <ul>
+              <li><a href="https://www.shure.com/en-US/products/microphones/beta_91a" target="_blank" rel="noopener">Shure Beta 91</a></li>
+              <li><a href="https://www.shure.com/en-US/products/microphones/beta_52a" target="_blank" rel="noopener">Shure Beta 52A</a></li>
+              <li><a href="https://www.shure.com/en-US/products/microphones/sm7b" target="_blank" rel="noopener">Shure SM7B</a></li>
+              <li><a href="https://www.shure.com/en-US/products/microphones/sm86" target="_blank" rel="noopener">Shure SM86</a></li>
+              <li>2 &times; <a href="https://www.shure.com/en-US/products/microphones/sm94" target="_blank" rel="noopener">Shure SM94</a></li>
+              <li><a href="https://www.sennheiser.com/en-us/catalog/products/microphones/e-904/e-904-500200" target="_blank" rel="noopener">Sennheiser e904</a></li>
+              <li>2 &times; <a href="https://www.sennheiser.com/en-us/catalog/products/microphones/e-609/e-609-silver-500074" target="_blank" rel="noopener">Sennheiser e609</a></li>
+              <li><a href="https://www.sweetwater.com/store/search?s=Sennheiser+MD+409+U3" target="_blank" rel="noopener">Sennheiser MD409-U3</a></li>
+              <li><a href="https://www.sennheiser.com/en-us/catalog/products/microphones/md-421-ii/md-421-ii-000984" target="_blank" rel="noopener">Sennheiser MD421</a></li>
+              <li><a href="https://mxlmics.com/products/2003a/" target="_blank" rel="noopener">MXL 2003</a></li>
+              <li>2 &times; <a href="https://www.rode.com/microphones/studio-condenser/m5" target="_blank" rel="noopener">Rode M5</a></li>
+              <li>2 &times; <a href="https://www.akg.com/microphones/condenser-microphones/C451B.html" target="_blank" rel="noopener">AKG C451B</a></li>
+              <li><a href="https://www.akg.com/microphones/condenser-microphones/C1000_S.html" target="_blank" rel="noopener">AKG C1000 S</a></li>
+              <li><a href="https://www.astonmics.com/EN/product/Mics/Origin" target="_blank" rel="noopener">Aston Origin</a></li>
+            </ul>
+          </div>
 
-    <div class="container gear-lists">
-      <div class="gear-grid">
-        <div class="gear-category">
-          <h3>Control Room</h3>
-          <ul>
-            <li><a href="https://www.apple.com/logic-pro/" target="_blank" rel="noopener">Logic Pro (Sequoia)</a></li>
-            <li><a href="https://www.allen-heath.com/hardware/mixers/ml-series/ml4000/" target="_blank" rel="noopener">Allen &amp; Heath ML-4000</a></li>
-            <li><a href="https://www.midasconsoles.com/product.html?modelCode=0714-AAQ" target="_blank" rel="noopener">Midas MR18</a></li>
-            <li><a href="https://www.behringer.com/product.html?modelCode=0400-AAF" target="_blank" rel="noopener">Behringer MDX2600 Compressor</a></li>
-            <li><a href="https://www.vinylengine.com/library/dokorder/8140.shtml" target="_blank" rel="noopener">Dokorder 8140 &frac14;" 4-track</a></li>
-          </ul>
-        </div>
+          <div class="gear-category">
+            <h3>Plug-In / VST Partners</h3>
+            <ul>
+              <li><a href="https://aberrantdsp.com/" target="_blank" rel="noopener">Aberrant</a></li>
+              <li><a href="https://www.waves.com/" target="_blank" rel="noopener">Waves</a></li>
+              <li><a href="https://www.wavesfactory.com/" target="_blank" rel="noopener">Wavesfactory</a></li>
+              <li><a href="https://freakshowindustries.com/" target="_blank" rel="noopener">Freakshow Industries</a></li>
+              <li><a href="https://www.spitfireaudio.com/" target="_blank" rel="noopener">Spitfire Audio</a></li>
+              <li><a href="https://www.audiothing.net/" target="_blank" rel="noopener">Audiothing</a></li>
+              <li><a href="https://www.adsrsounds.com/" target="_blank" rel="noopener">ADSR</a></li>
+              <li><a href="https://valhalladsp.com/" target="_blank" rel="noopener">Valhalla</a></li>
+              <li><a href="https://unitedplugins.com/soundevice-digital" target="_blank" rel="noopener">SoundeviceDigital</a></li>
+              <li><a href="https://kitplugins.com/" target="_blank" rel="noopener">KIT</a></li>
+              <li><a href="https://klanghelm.com/" target="_blank" rel="noopener">Klanghelm</a></li>
+              <li><a href="https://www.nomadfactory.com/" target="_blank" rel="noopener">Nomad Factory</a></li>
+            </ul>
+          </div>
 
-        <div class="gear-category">
-          <h3>Pedals</h3>
-          <ul>
-            <li><a href="https://www.boss.info/us/products/re-20/" target="_blank" rel="noopener">Boss RE-20 Space Echo</a></li>
-            <li><a href="https://www.boss.info/us/products/dd-6/" target="_blank" rel="noopener">Boss DD-6</a></li>
-            <li><a href="https://www.ibanez.com/usa/products/detail/ts9_1p_03.html" target="_blank" rel="noopener">Ibanez Tube Screamer</a></li>
-            <li><a href="https://cusackmusic.com/products/screamer" target="_blank" rel="noopener">Cusack Screamer</a></li>
-          </ul>
-        </div>
+          <div class="gear-category">
+            <h3>Control Room</h3>
+            <ul>
+              <li><a href="https://www.apple.com/logic-pro/" target="_blank" rel="noopener">Logic Pro (Sequoia)</a></li>
+              <li><a href="https://www.allen-heath.com/hardware/legacy-products/ml-series/resources/" target="_blank" rel="noopener">Allen &amp; Heath ML-4000</a></li>
+              <li><a href="https://www.midasconsoles.com/catalog.html?catalog=Category&amp;category=C-MIDAS-0-MIXERS" target="_blank" rel="noopener">Midas MR18</a></li>
+              <li><a href="https://www.behringer.com/product.html?modelCode=P0030" target="_blank" rel="noopener">Behringer MDX2600 Compressor</a></li>
+              <li><a href="https://www.hifiengine.com/manual_library/dokorder/8140.shtml" target="_blank" rel="noopener">Dokorder 8140 &frac14;" 4-track</a></li>
+            </ul>
+          </div>
 
-        <div class="gear-category">
-          <h3>Mics</h3>
-          <ul>
-            <li><a href="https://www.shure.com/en-US/products/microphones/beta/beta91a" target="_blank" rel="noopener">Shure Beta 91</a></li>
-            <li><a href="https://www.shure.com/en-US/products/microphones/beta/beta52a" target="_blank" rel="noopener">Shure Beta 52A</a></li>
-            <li><a href="https://www.shure.com/en-US/products/microphones/sm/sm7b" target="_blank" rel="noopener">Shure SM7B</a></li>
-            <li><a href="https://www.shure.com/en-US/products/microphones/sm/sm86" target="_blank" rel="noopener">Shure SM86</a></li>
-            <li>2 &times; <a href="https://www.shure.com/en-US/products/microphones/sm/sm94" target="_blank" rel="noopener">Shure SM94</a></li>
-            <li><a href="https://www.sennheiser.com/en-us/catalog/products/microphones/evolution-e-904/e-904-500200" target="_blank" rel="noopener">Sennheiser e904</a></li>
-            <li>2 &times; <a href="https://www.sennheiser.com/en-us/catalog/products/microphones/evolution-e-609/e-609-silver-009422" target="_blank" rel="noopener">Sennheiser e609</a></li>
-            <li><a href="https://www.sweetwater.com/store/detail/MD409--sennheiser-md-409" target="_blank" rel="noopener">Sennheiser MD409-U3</a></li>
-            <li><a href="https://www.sennheiser.com/en-us/catalog/products/microphones/md-421/md-421-ii-002040" target="_blank" rel="noopener">Sennheiser MD421</a></li>
-            <li><a href="https://www.mxlmics.com/microphones/studio/2003A/" target="_blank" rel="noopener">MXL 2003</a></li>
-            <li>2 &times; <a href="https://www.rode.com/microphones/studio-condenser/m5" target="_blank" rel="noopener">Rode M5</a></li>
-            <li>2 &times; <a href="https://www.akg.com/microphones/condenser-microphones/C451B.html" target="_blank" rel="noopener">AKG C451B</a></li>
-            <li><a href="https://www.akg.com/microphones/condenser-microphones/C1000S.html" target="_blank" rel="noopener">AKG C1000 S</a></li>
-            <li><a href="https://www.astonmics.com/product/origin/" target="_blank" rel="noopener">Aston Origin</a></li>
-          </ul>
-        </div>
+          <div class="gear-category">
+            <h3>Pedals</h3>
+            <ul>
+              <li><a href="https://www.boss.info/us/products/re-20/" target="_blank" rel="noopener">Boss RE-20 Space Echo</a></li>
+              <li><a href="https://www.boss.info/us/products/dd-6/" target="_blank" rel="noopener">Boss DD-6</a></li>
+              <li><a href="https://www.ibanez.com/usa/products/detail/ts9_99.html" target="_blank" rel="noopener">Ibanez Tube Screamer</a></li>
+              <li><a href="https://cusackmusic.com/screamer-v2/" target="_blank" rel="noopener">Cusack Screamer</a></li>
+            </ul>
+          </div>
 
-        <div class="gear-category">
-          <h3>Amps</h3>
-          <ul>
-            <li><a href="https://www.fender.com/en-US/guitar-amplifiers/vintage/pro-junior-iv/" target="_blank" rel="noopener">Fender Pro Junior</a></li>
-            <li><a href="https://voxamps.com/product/ac15c1/" target="_blank" rel="noopener">Vox AC15</a></li>
-          </ul>
-        </div>
-
-        <div class="gear-category">
-          <h3>Plug-In / VST Partners</h3>
-          <ul>
-            <li><a href="https://aberrantdsp.com/" target="_blank" rel="noopener">Aberrant</a></li>
-            <li><a href="https://www.waves.com/" target="_blank" rel="noopener">Waves</a></li>
-            <li><a href="https://www.wavesfactory.com/" target="_blank" rel="noopener">Wavesfactory</a></li>
-            <li><a href="https://freakshowindustries.com/" target="_blank" rel="noopener">Freakshow Industries</a></li>
-            <li><a href="https://www.spitfireaudio.com/" target="_blank" rel="noopener">Spitfire Audio</a></li>
-            <li><a href="https://www.audiothing.net/" target="_blank" rel="noopener">Audiothing</a></li>
-            <li><a href="https://www.adsrsounds.com/" target="_blank" rel="noopener">ADSR</a></li>
-            <li><a href="https://valhalladsp.com/" target="_blank" rel="noopener">Valhalla</a></li>
-            <li><a href="https://soundevicedigital.com/" target="_blank" rel="noopener">SoundeviceDigital</a></li>
-            <li><a href="https://kitplugins.com/" target="_blank" rel="noopener">KIT</a></li>
-            <li><a href="https://klanghelm.com/" target="_blank" rel="noopener">Klanghelm</a></li>
-            <li><a href="https://www.nomadfactory.com/" target="_blank" rel="noopener">Nomad Factory</a></li>
-          </ul>
+          <div class="gear-category">
+            <h3>Amps</h3>
+            <ul>
+              <li><a href="https://www.fender.com/products/pro-junior-iv" target="_blank" rel="noopener">Fender Pro Junior</a></li>
+              <li><a href="https://voxamps.com/product/the-vox-ac15-custom/" target="_blank" rel="noopener">Vox AC15</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -312,23 +316,23 @@
     <div class="gallery-scroller">
       <div class="scroll-row" data-direction="left" data-speed="160">
         <div class="scroll-track">
-          <div class="scroll-item"><img src="PROMO/PHOTOS/LIVE ROOM/LiveRoom3.jpg" alt="Live Room" loading="lazy"></div>
-          <div class="scroll-item"><img src="PROMO/PHOTOS/EXTERIOR/Ext5.jpg" alt="Exterior" loading="lazy"></div>
-          <div class="scroll-item"><img src="PROMO/PHOTOS/CONTROL ROOM/ControlRoom1.jpeg" alt="Control Room" loading="lazy"></div>
-          <div class="scroll-item"><img src="PROMO/PHOTOS/LOUNGE/Lounge1.jpg" alt="Lounge" loading="lazy"></div>
-          <div class="scroll-item"><img src="PROMO/PHOTOS/GREENHOUSE/Greenhouse4.jpg" alt="Greenhouse" loading="lazy"></div>
-          <div class="scroll-item"><img src="PROMO/PHOTOS/LIVE ROOM/LiveRoom9.jpg" alt="Live Room" loading="lazy"></div>
-          <div class="scroll-item"><img src="PROMO/PHOTOS/FARMHOUSE/Farmhouse2.jpeg" alt="Farmhouse" loading="lazy"></div>
-          <div class="scroll-item"><img src="PROMO/PHOTOS/EXTERIOR/Ext7.JPG" alt="Exterior" loading="lazy"></div>
-          <div class="scroll-item"><img src="PROMO/PHOTOS/CAFE/14th2.jpg" alt="14th Coffee Co." loading="lazy"></div>
-          <div class="scroll-item"><img src="PROMO/PHOTOS/LOUNGE/Lounge5.jpg" alt="Lounge" loading="lazy"></div>
-          <div class="scroll-item"><img src="PROMO/PHOTOS/PIANO FOYER/Foyer1.jpg" alt="Piano Foyer" loading="lazy"></div>
-          <div class="scroll-item"><img src="PROMO/PHOTOS/EXTERIOR/Ext15.jpeg" alt="Exterior" loading="lazy"></div>
-          <div class="scroll-item"><img src="PROMO/PHOTOS/LIVE ROOM/LiveRoom4.jpg" alt="Live Room" loading="lazy"></div>
-          <div class="scroll-item"><img src="PROMO/PHOTOS/FARMHOUSE/Farmhouse5.JPG" alt="Farmhouse" loading="lazy"></div>
-          <div class="scroll-item"><img src="PROMO/PHOTOS/CONTROL ROOM/ControlRoom5.JPG" alt="Control Room" loading="lazy"></div>
-          <div class="scroll-item"><img src="PROMO/POSTERS/Feb152026-Brandys.jpg" alt="The Brandy Alexanders - Feb 15, 2026" loading="lazy"></div>
-          <div class="scroll-item"><img src="PROMO/POSTERS/March212026-Bilal.jpg" alt="Bilal Nasser - March 21, 2026" loading="lazy"></div>
+          <div class="scroll-item"><img src="img/gallery-liveroom3.jpg" alt="Live Room" loading="lazy" width="720" height="333"></div>
+          <div class="scroll-item"><img src="img/gallery-ext5.jpg" alt="Exterior" loading="lazy" width="720" height="481"></div>
+          <div class="scroll-item"><img src="img/gallery-controlroom1.jpg" alt="Control Room" loading="lazy" width="720" height="540"></div>
+          <div class="scroll-item"><img src="img/gallery-lounge1.jpg" alt="Lounge" loading="lazy" width="720" height="540"></div>
+          <div class="scroll-item"><img src="img/gallery-greenhouse4.jpg" alt="Greenhouse" loading="lazy" width="720" height="481"></div>
+          <div class="scroll-item"><img src="img/gallery-liveroom9.jpg" alt="Live Room" loading="lazy" width="720" height="540"></div>
+          <div class="scroll-item"><img src="img/gallery-farmhouse2.jpg" alt="Farmhouse" loading="lazy" width="720" height="540"></div>
+          <div class="scroll-item"><img src="img/gallery-ext7.jpg" alt="Exterior" loading="lazy" width="720" height="540"></div>
+          <div class="scroll-item"><img src="img/gallery-14th2.jpg" alt="14th Coffee Co." loading="lazy" width="720" height="481"></div>
+          <div class="scroll-item"><img src="img/gallery-lounge5.jpg" alt="Lounge" loading="lazy" width="720" height="540"></div>
+          <div class="scroll-item"><img src="img/gallery-foyer1.jpg" alt="Piano Foyer" loading="lazy" width="720" height="481"></div>
+          <div class="scroll-item"><img src="img/gallery-ext15.jpg" alt="Exterior" loading="lazy" width="720" height="540"></div>
+          <div class="scroll-item"><img src="img/gallery-liveroom4.jpg" alt="Live Room" loading="lazy" width="720" height="333"></div>
+          <div class="scroll-item"><img src="img/gallery-farmhouse5.jpg" alt="Farmhouse" loading="lazy" width="720" height="540"></div>
+          <div class="scroll-item"><img src="img/gallery-controlroom5.jpg" alt="Control Room" loading="lazy" width="720" height="540"></div>
+          <div class="scroll-item"><img src="img/gallery-feb152026-brandys.jpg" alt="The Brandy Alexanders - Feb 15, 2026" loading="lazy" width="720" height="1080"></div>
+          <div class="scroll-item"><img src="img/gallery-march212026-bilal.jpg" alt="Bilal Nasser - March 21, 2026" loading="lazy" width="720" height="1080"></div>
         </div>
       </div>
     </div>
@@ -339,7 +343,7 @@
     <div class="container">
       <h2 class="section-title">Contact</h2>
       <div class="contact-remote">
-        <p>Time Out of Mind is in Essex County, Ontario, and it is a remote location. There are no grocery stores or bars. But this is WHY you come here: to escape the city, to come to a creative space, and to have a creative experience. Take advantage of it, and let us worry about keeping you fed and imbibed.</p>
+        <p>Time Out of Mind is in Essex County, Ontario. We are remote, which means there are no grocery stores or bars nearby. But this is exactly WHY you come here: to escape the city, to come to a creative space, and to have a creative experience. Take advantage of it, and let us worry about keeping you fed and imbibed.</p>
         <p>We strongly encourage clients to upgrade to our unique hospitality packages to ensure a band's creative momentum never grinds to a halt.</p>
       </div>
       <div class="contact-grid">
@@ -377,6 +381,7 @@
 
   <audio id="audio-element" preload="metadata"></audio>
 
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="js/main.js"></script>
 </body>
