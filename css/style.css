@@ -148,9 +148,9 @@ h2, h3, .nav-logo {
   letter-spacing: 0.15em;
   color: var(--ink);
   text-decoration: none;
-  opacity: 0.7;
   white-space: nowrap;
   flex-shrink: 0;
+  /* opacity controlled by overdrive animation */
 }
 
 .nav-links {
@@ -198,7 +198,11 @@ h2, h3, .nav-logo {
 
 .nav-hero .nav-logo {
   color: var(--parchment);
-  opacity: 0.9;
+  animation: logo-enter-hero 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+}
+
+@keyframes logo-enter-hero {
+  to { opacity: 0.9; transform: translateY(0); }
 }
 
 .nav-hero .nav-links a {
@@ -314,9 +318,9 @@ h2, h3, .nav-logo {
   font-size: 1.2rem;
   color: var(--sunset-coral);
   opacity: 0.7;
-  animation: drift 3s ease-in-out infinite;
   font-family: 'Courier Prime', monospace;
   z-index: 2;
+  /* animation set in OVERDRIVE section */
 }
 
 @keyframes drift {
@@ -611,7 +615,7 @@ h2, h3, .nav-logo {
 
 .about-photo img {
   width: 100%;
-  object-fit: cover;
+  height: auto;
   filter: saturate(0.85) contrast(1.05);
   transition: transform 0.6s ease, filter 0.6s ease;
 }
@@ -687,6 +691,25 @@ h2, h3, .nav-logo {
   position: absolute;
   left: 0;
   color: var(--amber);
+}
+
+.rate-cta {
+  display: inline-block;
+  margin-top: 20px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--amber);
+  border: 1px solid var(--amber);
+  padding: 10px 24px;
+  transition: background 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+}
+
+.rate-cta:hover {
+  background: var(--amber);
+  color: var(--cream);
 }
 
 .rates-extras {
@@ -1041,6 +1064,129 @@ h2, h3, .nav-logo {
   right: 16px;
   top: 50%;
   transform: translateY(-50%);
+}
+
+/* ===== OVERDRIVE: SCROLL REVEALS ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children */
+.reveal-stagger .reveal { transition-delay: 0s; }
+.reveal-stagger .reveal:nth-child(2) { transition-delay: 0.08s; }
+.reveal-stagger .reveal:nth-child(3) { transition-delay: 0.16s; }
+.reveal-stagger .reveal:nth-child(4) { transition-delay: 0.24s; }
+.reveal-stagger .reveal:nth-child(5) { transition-delay: 0.32s; }
+.reveal-stagger .reveal:nth-child(6) { transition-delay: 0.40s; }
+.reveal-stagger .reveal:nth-child(7) { transition-delay: 0.48s; }
+
+/* Photo breaks: parallax-style slow scale on scroll */
+.photo-break img {
+  transform: scale(1.08);
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.photo-break.visible img {
+  transform: scale(1);
+}
+
+/* Rate price count-up glow */
+.rate-price.counted {
+  animation: price-land 0.4s ease-out;
+}
+
+@keyframes price-land {
+  0% { opacity: 0.6; transform: translateY(4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== OVERDRIVE: CINEMATIC HERO ===== */
+.hero-bg {
+  animation: ken-burns 25s ease-in-out infinite alternate;
+  transform-origin: 30% 60%;
+}
+
+@keyframes ken-burns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+
+/* Film grain overlay */
+.section-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.04;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  mix-blend-mode: overlay;
+}
+
+/* Nav links stagger in */
+.nav-links a {
+  opacity: 0;
+  transform: translateY(-8px);
+  animation: nav-enter 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.nav-links li:nth-child(1) a { animation-delay: 0.3s; }
+.nav-links li:nth-child(2) a { animation-delay: 0.4s; }
+.nav-links li:nth-child(3) a { animation-delay: 0.5s; }
+.nav-links li:nth-child(4) a { animation-delay: 0.6s; }
+.nav-links li:nth-child(5) a { animation-delay: 0.7s; }
+.nav-links li:nth-child(6) a { animation-delay: 0.8s; }
+.nav-links li:nth-child(7) a { animation-delay: 0.9s; }
+
+@keyframes nav-enter {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Nav logo fade in */
+.nav-logo {
+  opacity: 0;
+  animation: logo-enter 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+}
+
+@keyframes logo-enter {
+  to { opacity: 0.7; transform: translateY(0); }
+}
+
+/* Scroll indicator heartbeat pulse */
+.scroll-indicator {
+  animation: heartbeat 2.4s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.7; }
+  15% { transform: translateX(-50%) translateY(3px); opacity: 1; }
+  30% { transform: translateX(-50%) translateY(0); opacity: 0.7; }
+  45% { transform: translateX(-50%) translateY(5px); opacity: 0.9; }
+  60% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .hero-bg { animation: none; }
+  .nav-links a { opacity: 1; transform: none; animation: none; }
+  .nav-logo { opacity: 0.7; animation: none; }
+  .scroll-indicator { animation: none; opacity: 0.6; }
+  .photo-break img { transform: none; transition: none; }
+  .photo-break.visible img { transform: none; }
 }
 
 /* ===== RESPONSIVE ===== */

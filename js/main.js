@@ -161,6 +161,8 @@ precision highp float;
 out vec4 O;
 uniform float time;
 uniform vec2 resolution;
+uniform float bass;
+uniform float treble;
 
 #define FC gl_FragCoord.xy
 #define R resolution
@@ -174,13 +176,17 @@ void main(){
   vec2 uv=(FC-.5*R)/R.y;
   vec3 col=vec3(1);
   uv.x+=.25;
-  uv*=vec2(2,1);
-  float n=fbm(uv*.28-vec2(T*.01,0));
-  n=noise(uv*3.+n*2.);
-  col.r-=fbm(uv+vec2(0,T*.015)+n);
-  col.g-=fbm(uv*1.003+vec2(0,T*.015)+n+.003);
-  col.b-=fbm(uv*1.006+vec2(0,T*.015)+n+.006);
-  vec3 smokeColor=vec3(0.24,0.20,0.15);
+  // Bass churns the smoke — distorts UV space
+  float bassWarp = bass * 0.3;
+  uv*=vec2(2.0 + bassWarp, 1.0);
+  float speed = 0.015 + bass * 0.02;
+  float n=fbm(uv*(.28 + treble * 0.1)-vec2(T*.01,0));
+  n=noise(uv*3.+n*(2.0 + bass * 1.5));
+  col.r-=fbm(uv+vec2(0,T*speed)+n);
+  col.g-=fbm(uv*1.003+vec2(0,T*speed)+n+.003);
+  col.b-=fbm(uv*1.006+vec2(0,T*speed)+n+.006);
+  // Sunset tint when treble is high
+  vec3 smokeColor=mix(vec3(0.24,0.20,0.15), vec3(0.35,0.18,0.18), treble * 0.6);
   col=mix(col,smokeColor,dot(col,vec3(.21,.71,.07)));
   col=mix(vec3(.08),col,min(time*.1,1.));
   col=clamp(col,.08,1.);
@@ -217,6 +223,8 @@ void main(){
 
   const resLoc = gl.getUniformLocation(program, 'resolution');
   const timeLoc = gl.getUniformLocation(program, 'time');
+  const bassLoc = gl.getUniformLocation(program, 'bass');
+  const trebleLoc = gl.getUniformLocation(program, 'treble');
   let animId = null;
   let isVisible = false;
 
@@ -239,6 +247,10 @@ void main(){
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
     gl.uniform2f(resLoc, canvas.width, canvas.height);
     gl.uniform1f(timeLoc, now * 1e-3);
+    // Audio-reactive uniforms
+    const ar = window._audioReactive;
+    gl.uniform1f(bassLoc, ar ? ar.getBass() : 0);
+    gl.uniform1f(trebleLoc, ar ? ar.getTreble() : 0);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     animId = requestAnimationFrame(render);
   }
@@ -326,6 +338,119 @@ void main(){
     if (e.key === 'ArrowLeft') prev();
     if (e.key === 'ArrowRight') next();
   });
+})();
+
+
+/* ===== OVERDRIVE: SCROLL REVEALS ===== */
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    return;
+  }
+
+  const allReveal = Array.from(document.querySelectorAll('.reveal, .photo-break'));
+
+  function checkReveals() {
+    const vh = window.innerHeight;
+    allReveal.forEach((el, i) => {
+      if (el.classList.contains('visible')) return;
+      const rect = el.getBoundingClientRect();
+      if (rect.top < vh * 0.92 && rect.bottom > 0) {
+        el.classList.add('visible');
+      }
+    });
+  }
+
+  // Check on scroll (throttled via rAF)
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => { checkReveals(); ticking = false; });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // Initial check
+  checkReveals();
+
+  // Rate price count-up animation
+  const ratePrices = document.querySelectorAll('.rate-price');
+  const priceObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const text = el.textContent;
+      const match = text.match(/\$[\d,]+/);
+      if (!match) return;
+
+      const target = parseInt(match[0].replace(/[$,]/g, ''));
+      const per = el.querySelector('.rate-per');
+      const perText = per ? per.textContent : '';
+      const duration = 600;
+      const start = performance.now();
+
+      function tick(now) {
+        const t = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - t, 3); // ease-out cubic
+        const val = Math.round(target * ease);
+        el.childNodes[0].textContent = '$' + val.toLocaleString();
+        if (t < 1) requestAnimationFrame(tick);
+        else el.classList.add('counted');
+      }
+      requestAnimationFrame(tick);
+      priceObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+
+  ratePrices.forEach(el => priceObserver.observe(el));
+})();
+
+
+/* ===== OVERDRIVE: AUDIO-REACTIVE SMOKE ===== */
+(function() {
+  const audio = document.getElementById('audio-element');
+  const canvas = document.querySelector('.smoke-canvas');
+  if (!audio || !canvas) return;
+
+  let audioCtx, analyser, source, dataArray, connected = false;
+
+  function connectAudio() {
+    if (connected) return;
+    try {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      source = audioCtx.createMediaElementSource(audio);
+      analyser = audioCtx.createAnalyser();
+      analyser.fftSize = 256;
+      analyser.smoothingTimeConstant = 0.8;
+      source.connect(analyser);
+      analyser.connect(audioCtx.destination);
+      dataArray = new Uint8Array(analyser.frequencyBinCount);
+      connected = true;
+    } catch(e) { /* silent fail — smoke still works without audio reactivity */ }
+  }
+
+  // Connect on first play
+  audio.addEventListener('play', connectAudio, { once: true });
+
+  // Expose getAudioData for the smoke shader to consume
+  window._audioReactive = {
+    getBass: function() {
+      if (!connected || !analyser) return 0;
+      analyser.getByteFrequencyData(dataArray);
+      // Average of first 8 bins (low frequencies / bass)
+      let sum = 0;
+      for (let i = 0; i < 8; i++) sum += dataArray[i];
+      return (sum / 8) / 255;
+    },
+    getTreble: function() {
+      if (!connected || !analyser) return 0;
+      analyser.getByteFrequencyData(dataArray);
+      // Average of bins 40-80 (high frequencies)
+      let sum = 0;
+      for (let i = 40; i < 80; i++) sum += dataArray[i];
+      return (sum / 40) / 255;
+    }
+  };
 })();
 
 
