@@ -5,9 +5,11 @@
   const overlay = document.getElementById('mobile-overlay');
   const heroSection = document.getElementById('hero');
 
-  // Sticky nav on scroll
+  // Sticky nav: transparent on hero, opaque elsewhere
   const observer = new IntersectionObserver(([entry]) => {
-    navbar.classList.toggle('scrolled', !entry.isIntersecting);
+    const onHero = entry.isIntersecting;
+    navbar.classList.toggle('scrolled', !onHero);
+    navbar.classList.toggle('nav-hero', onHero);
   }, { threshold: 0.1 });
   observer.observe(heroSection);
 
@@ -71,8 +73,7 @@
     tracks.forEach(t => t.classList.remove('active'));
     tracks[index].classList.add('active');
     currentIndex = index;
-    const src = tracks[index].dataset.src;
-    audio.src = src;
+    audio.src = tracks[index].dataset.src;
     const artist = tracks[index].querySelector('.track-artist').textContent;
     const title = tracks[index].querySelector('.track-title').textContent;
     nowPlaying.textContent = `${artist} — ${title}`;
@@ -83,7 +84,6 @@
     audio.play();
     isPlaying = true;
     playBtn.innerHTML = '&#10074;&#10074;';
-    // Activate smoke
     const smokeCanvas = document.querySelector('.smoke-canvas');
     if (smokeCanvas) smokeCanvas.classList.add('active');
   }
@@ -241,7 +241,6 @@ void main(){
     animId = requestAnimationFrame(render);
   }
 
-  // Only render when the section is visible
   const smokeObserver = new IntersectionObserver(([entry]) => {
     isVisible = entry.isIntersecting;
     if (isVisible && !animId) animId = requestAnimationFrame(render);
@@ -262,7 +261,6 @@ void main(){
     const items = track.innerHTML;
     track.innerHTML = items + items;
 
-    // Set speed via CSS custom property
     row.style.setProperty('--speed', speed + 's');
   });
 })();
@@ -276,13 +274,18 @@ void main(){
   const prevBtn = document.getElementById('lightbox-prev');
   const nextBtn = document.getElementById('lightbox-next');
 
-  const allImages = Array.from(document.querySelectorAll('.scroll-item img'));
+  // Only use the ORIGINAL images (first half), not the duplicated ones
+  const scrollTrack = document.querySelector('.scroll-track');
+  const totalOriginal = scrollTrack ? scrollTrack.children.length / 2 : 0;
+  const allItems = Array.from(document.querySelectorAll('.scroll-item'));
+  const originalImages = allItems.slice(0, totalOriginal).map(item => item.querySelector('img'));
+
   let currentIdx = 0;
 
   function open(index) {
-    currentIdx = index;
-    lightboxImg.src = allImages[index].src;
-    lightboxImg.alt = allImages[index].alt;
+    currentIdx = index % totalOriginal;
+    lightboxImg.src = originalImages[currentIdx].src;
+    lightboxImg.alt = originalImages[currentIdx].alt;
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -293,17 +296,18 @@ void main(){
   }
 
   function prev() {
-    currentIdx = currentIdx <= 0 ? allImages.length - 1 : currentIdx - 1;
-    lightboxImg.src = allImages[currentIdx].src;
+    currentIdx = currentIdx <= 0 ? originalImages.length - 1 : currentIdx - 1;
+    lightboxImg.src = originalImages[currentIdx].src;
   }
 
   function next() {
-    currentIdx = currentIdx >= allImages.length - 1 ? 0 : currentIdx + 1;
-    lightboxImg.src = allImages[currentIdx].src;
+    currentIdx = currentIdx >= originalImages.length - 1 ? 0 : currentIdx + 1;
+    lightboxImg.src = originalImages[currentIdx].src;
   }
 
-  allImages.forEach((img, i) => {
-    img.parentElement.addEventListener('click', () => open(i));
+  // Attach click to ALL items (including duplicates) but map to original index
+  allItems.forEach((item, i) => {
+    item.addEventListener('click', () => open(i % totalOriginal));
   });
 
   closeBtn.addEventListener('click', close);
@@ -323,35 +327,6 @@ void main(){
 })();
 
 
-/* ===== SCROLL REVEAL ===== */
-(function() {
-  const revealElements = document.querySelectorAll('#listen .section-title, #watch .section-title, #about .section-title, #rates .section-title, #gear .section-title, #gallery .section-title, #contact .section-title, .rate-card, .gear-category, .rates-remember, .rates-extras, .contact-info, .contact-map, .video-item, .about-text p, .about-photo, .gear-photo, .section-coda p');
-
-  revealElements.forEach(el => el.classList.add('reveal'));
-
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
-  revealElements.forEach(el => revealObserver.observe(el));
-
-  // Stagger rate cards and gear categories
-  document.querySelectorAll('.rate-card').forEach((card, i) => {
-    card.style.transitionDelay = (i * 0.1) + 's';
-  });
-  document.querySelectorAll('.gear-category').forEach((cat, i) => {
-    cat.style.transitionDelay = (i * 0.08) + 's';
-  });
-  document.querySelectorAll('.section-coda p').forEach((p, i) => {
-    p.style.transitionDelay = (i * 0.15) + 's';
-  });
-})();
-
-
 /* ===== LEAFLET MAP ===== */
 (function() {
   const lat = 42.1265;
@@ -362,9 +337,9 @@ void main(){
     zoomControl: false
   }).setView([lat, lng], 14);
 
-  // Muted tile layer for aesthetic cohesion
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  // Muted tile layer
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
   }).addTo(map);
 
   L.control.zoom({ position: 'bottomright' }).addTo(map);
