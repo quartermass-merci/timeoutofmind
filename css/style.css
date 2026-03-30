@@ -1110,13 +1110,12 @@ h2, h3, .nav-logo {
 
 /* ===== OVERDRIVE: CINEMATIC HERO ===== */
 .hero-bg {
-  animation: ken-burns 25s ease-in-out infinite alternate;
-  transform-origin: 30% 60%;
+  animation: hero-breathe 20s ease-in-out infinite alternate;
 }
 
-@keyframes ken-burns {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.06); }
+@keyframes hero-breathe {
+  0% { filter: brightness(0.92) saturate(0.9); }
+  100% { filter: brightness(1.02) saturate(1.05); }
 }
 
 /* Film grain overlay */
@@ -1181,7 +1180,7 @@ h2, h3, .nav-logo {
     transform: none;
     transition: none;
   }
-  .hero-bg { animation: none; }
+  .hero-bg { animation: none; filter: none; }
   .nav-links a { opacity: 1; transform: none; animation: none; }
   .nav-logo { opacity: 0.7; animation: none; }
   .scroll-indicator { animation: none; opacity: 0.6; }
