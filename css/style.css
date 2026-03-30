@@ -744,8 +744,8 @@ h2, h3, .nav-logo {
 
 .scroll-item {
   flex-shrink: 0;
-  width: 340px;
-  height: 240px;
+  width: 420px;
+  height: 300px;
   overflow: hidden;
   transition: transform 0.4s ease, filter 0.4s ease;
   cursor: pointer;
@@ -926,8 +926,8 @@ h2, h3, .nav-logo {
   }
 
   .scroll-item {
-    width: 240px;
-    height: 170px;
+    width: 300px;
+    height: 210px;
   }
 
   .gear-grid {
@@ -947,8 +947,8 @@ h2, h3, .nav-logo {
   }
 
   .scroll-item {
-    width: 200px;
-    height: 140px;
+    width: 240px;
+    height: 170px;
   }
 
   .hero-logo {
