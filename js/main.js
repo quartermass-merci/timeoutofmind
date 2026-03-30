@@ -84,6 +84,7 @@
     audio.play();
     isPlaying = true;
     playBtn.innerHTML = '&#10074;&#10074;';
+    playBtn.classList.add('is-playing');
     const smokeCanvas = document.querySelector('.smoke-canvas');
     if (smokeCanvas) smokeCanvas.classList.add('active');
   }
@@ -92,6 +93,7 @@
     audio.pause();
     isPlaying = false;
     playBtn.innerHTML = '&#9654;';
+    playBtn.classList.remove('is-playing');
   }
 
   playBtn.addEventListener('click', () => isPlaying ? pause() : play());
