@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Out Of Mind Recording Co. | Essex County, Ontario</title>
+  <meta name="description" content="Analog recording studio in a 100-year old barn in Essex County, Ontario. 2500 sq ft of creative space with vintage Allen & Heath ML4000 console.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">TOOMRC</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#listen">Listen</a></li>
+        <li><a href="#watch">Watch</a></li>
+        <li><a href="#about">Who We Are</a></li>
+        <li><a href="#rates">Rates</a></li>
+        <li><a href="#gear">Gear</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Mobile menu overlay -->
+  <div class="mobile-overlay" id="mobile-overlay">
+    <ul>
+      <li><a href="#listen">Listen</a></li>
+      <li><a href="#watch">Watch</a></li>
+      <li><a href="#about">Who We Are</a></li>
+      <li><a href="#rates">Rates</a></li>
+      <li><a href="#gear">Gear</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero -->
+  <section id="hero" class="section-hero">
+    <div class="hero-content">
+      <img src="../PROMO/LOGOS/TOOMRC-Logo-transparent.png" alt="Time Out Of Mind Recording Co." class="hero-logo">
+      <p class="hero-copy">
+        We make records the proper way, the human way, the tried and true way: a great experience in a great space means great performances and great tones.
+      </p>
+      <p class="hero-copy">
+        This space is located in a 100-year old barn in the beautiful countryside of Essex County, Ontario. 2500 sq. feet are yours to realize whatever creative vision you may have. There is a massive live room perfect for recording drums, guitars, or anything else. There is a vintage Allen &amp; Heath ML4000 console. There is natural light and limitless beauty. There is no end to what can happen here, be it recording, rehearsals, demoing, pre-production, video shoots, audiobooks, and anything else involving music or speech sounding great in a listener's ears.
+      </p>
+      <p class="hero-copy">
+        The experience has its own perks as well. There are accommodations on site. There is a farmhouse. There is a hot tub and a firepit. There is a coffee roastery. There is a collective love of pets and a fenced-in yard. There is the magnificent, open land of Essex County. There is a heartbreaking sunset every evening. There is a studio staff full of creative ideas motivated by the undying love of recorded music. There is an amazing arts community of which we are a part. There is a communal copy of <em>Our Band Could Be Your Life</em>. There is a greenhouse. And most importantly: there is time.
+      </p>
+      <p class="hero-copy">
+        There is also NOTHING around. There are no grocery stores, and no bars. Therefore, we strongly encourage clients to upgrade to our unique hospitality packages that will ensure a band's creative momentum never needs to grind to a halt. This is WHY you come here: to escape the city, to come to a creative space, and to have a creative experience. Take advantage of it, and let us worry about keeping you fed and imbibed.
+      </p>
+      <a href="mailto:timeoutofmindrecordingco@gmail.com" class="hero-email">timeoutofmindrecordingco@gmail.com</a>
+    </div>
+    <div class="scroll-indicator">
+      <span>&darr;</span>
+    </div>
+  </section>
+
+  <!-- Listen -->
+  <section id="listen" class="section-dark">
+    <div class="container">
+      <h2 class="section-title section-title-light">Listen</h2>
+      <div class="audio-player" id="audio-player">
+        <div class="player-now-playing" id="now-playing">Select a track</div>
+        <div class="player-controls">
+          <button class="player-btn" id="prev-btn" aria-label="Previous">&laquo;</button>
+          <button class="player-btn player-btn-main" id="play-btn" aria-label="Play">&#9654;</button>
+          <button class="player-btn" id="next-btn" aria-label="Next">&raquo;</button>
+        </div>
+        <div class="player-progress-wrap" id="progress-wrap">
+          <div class="player-progress" id="progress-bar"></div>
+        </div>
+        <div class="player-time">
+          <span id="current-time">0:00</span>
+          <span id="duration">0:00</span>
+        </div>
+        <ul class="track-list" id="track-list">
+          <li data-src="../AUDIO FILES/Bilal Nasser - In Our Lifetime (March 21, 2026).mp3">
+            <span class="track-artist">Bilal Nasser</span>
+            <span class="track-title">In Our Lifetime</span>
+          </li>
+          <li data-src="../AUDIO FILES/Bilal Nasser - Soul Of My Soul (March 21, 2026).mp3">
+            <span class="track-artist">Bilal Nasser</span>
+            <span class="track-title">Soul Of My Soul</span>
+          </li>
+          <li data-src="../AUDIO FILES/Georgie Von Porgie & The Pallbearers - Dirty Water.mp3">
+            <span class="track-artist">Georgie Von Porgie &amp; The Pallbearers</span>
+            <span class="track-title">Dirty Water</span>
+          </li>
+          <li data-src="../AUDIO FILES/The Brandy Alexanders - Blink Of An Eye (February 15, 2026).mp3">
+            <span class="track-artist">The Brandy Alexanders</span>
+            <span class="track-title">Blink Of An Eye</span>
+          </li>
+          <li data-src="../AUDIO FILES/The Brandy Alexanders - Concubine Love (February 15, 2026).mp3">
+            <span class="track-artist">The Brandy Alexanders</span>
+            <span class="track-title">Concubine Love</span>
+          </li>
+          <li data-src="../AUDIO FILES/Humble John - Highway Gospel.wav">
+            <span class="track-artist">Humble John</span>
+            <span class="track-title">Highway Gospel</span>
+          </li>
+          <li data-src="../AUDIO FILES/Humble John - You Deserve To Be Loved.wav">
+            <span class="track-artist">Humble John</span>
+            <span class="track-title">You Deserve To Be Loved</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Watch -->
+  <section id="watch" class="section-cream">
+    <div class="container">
+      <h2 class="section-title">Watch</h2>
+      <div class="video-grid">
+        <div class="video-item">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/apJnJfAu3ag?si=xRZQie2EanTtI1TA" title="The Brandy Alexanders - Live at TOOMRC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-caption">The Brandy Alexanders &mdash; Live at Time Out Of Mind Recording Co.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who We Are -->
+  <section id="about" class="section-light">
+    <div class="container container-narrow">
+      <h2 class="section-title">Who We Are</h2>
+      <p>Time Out Of Mind Recording Co. began in fall of 2025 when Sheila Roberts and Eamon McGrath of Cassettes Records partnered with Warren Rutgers of 14th Coffee Co. to bring an analog state of mind, way of working, and mode of being to Essex County.</p>
+      <p>Like an extension of the legendary shows the team was producing in the 100-year old barn located on the 14th Coffee Co. property, Time Out Of Mind formed naturally as more and more bands asked about recording in the remote, secluded and hushed-about space.</p>
+      <p>Now the team boasts 2000 sq. ft. of room, all equipped to be used for tracking and production 24-hours a day from the hearth of the fire: a vintage Allen &amp; Heath ML4000 console.</p>
+    </div>
+  </section>
+
+  <!-- Rates -->
+  <section id="rates" class="section-cream">
+    <div class="container">
+      <h2 class="section-title">Rates</h2>
+      <div class="rates-grid">
+
+        <div class="rate-card">
+          <div class="rate-price">$800<span class="rate-per"> / day</span></div>
+          <ul class="rate-details">
+            <li>One day of tracking, mixing, producing, etc., in the control room, live room, lounge, and piano foyer</li>
+            <li>Accommodations for two in the upstairs loft</li>
+            <li>Loud tracking must be wrapped by 10:00pm</li>
+          </ul>
+        </div>
+
+        <div class="rate-card">
+          <div class="rate-price">$1,100<span class="rate-per"> / day</span></div>
+          <ul class="rate-details">
+            <li>One day of tracking, mixing, producing, etc., in the control room, live room, lounge, and piano foyer</li>
+            <li>Accommodations for two in the upstairs loft</li>
+            <li>Accommodations for eight in the farmhouse</li>
+            <li>No sound curfew</li>
+          </ul>
+        </div>
+
+        <div class="rate-card">
+          <div class="rate-price">$1,300<span class="rate-per"> / day</span></div>
+          <ul class="rate-details">
+            <li>One day of tracking, mixing, producing, etc., in the control room, live room, lounge, and piano foyer</li>
+            <li>Accommodations for two in the upstairs loft</li>
+            <li>Accommodations for eight in the farmhouse</li>
+            <li>Hospitality includes groceries and soft drinks</li>
+            <li>No sound curfew</li>
+          </ul>
+        </div>
+
+        <div class="rate-card">
+          <div class="rate-price">$1,500<span class="rate-per"> / day</span></div>
+          <ul class="rate-details">
+            <li>One day of tracking, mixing, producing, etc., in the control room, live room, lounge, and piano foyer</li>
+            <li>Accommodations for two in the upstairs loft</li>
+            <li>Accommodations for eight in the farmhouse</li>
+            <li>Hospitality includes groceries, soft drinks, and a personalized bar</li>
+            <li>No sound curfew</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="rates-extras">
+        <p>Further upgrades are also available. Custom hospitality requests are more than possible with notice.</p>
+        <p>Facilities Manager Johnny Mulder can also tap dance upon negotiated fee.</p>
+        <p>All clients can enjoy complimentary coffee thanks to 14th Coffee Co.</p>
+        <p class="rates-fine-print">Dietary needs/restrictions and hospitality specifications to be advanced with studio management. Loft includes one full kitchen, one full bathroom (with a soaker tub). Farmhouse includes one full kitchen, two full bathrooms. With the price of food being what it is, we highly recommend not ordering pizza every day.</p>
+      </div>
+
+      <div class="rates-remember">
+        <h3>...but please remember.</h3>
+        <p>We are flexible and approachable people committed to making sure that a creative project is completed with the needs of the artist as our primary objective. Therefore, we can work with you and your budget to see what we can do for you and how.</p>
+        <p>Not every band needs to stay here, for example. Not every band wants to track all the instruments at the same place. Not every session has the same needs, and sometimes, with different needs come different costs.</p>
+        <p>Do you want to record live in front of an audience? Do you want us to source a film crew to shoot a promo performance video for your upcoming single? Do you want a great new mix for that shelved outtake you've been agonizing over for years?</p>
+        <p>We will never know if you don't tell us, and all it takes is a phone call, DM or email to get the conversation going.</p>
+        <p><a href="mailto:timeoutofmindrecordingco@gmail.com" class="cta-link">Please get in touch!</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gear -->
+  <section id="gear" class="section-light">
+    <div class="container">
+      <h2 class="section-title">Gear</h2>
+
+      <div class="gear-quotes">
+        <blockquote>We highly recommend you lock your phone up in one of our mic lockers during your session.</blockquote>
+        <blockquote>We do not and will not under any circumstances use autotune.</blockquote>
+        <blockquote>Remember: if the vibe sucks, it doesn't matter how good your gear is.</blockquote>
+      </div>
+
+      <div class="gear-grid">
+        <div class="gear-category">
+          <h3>Control Room</h3>
+          <ul>
+            <li>Logic Pro (Sequoia)</li>
+            <li>Allen &amp; Heath ML-4000</li>
+            <li>Midas MR18</li>
+            <li>Behringer MDX2600 Compressor</li>
+            <li>Dokorder 8140 &frac14;" 4-track</li>
+          </ul>
+        </div>
+
+        <div class="gear-category">
+          <h3>Mics</h3>
+          <ul>
+            <li>Shure Beta 91</li>
+            <li>Shure Beta 52A</li>
+            <li>Shure SM7B</li>
+            <li>Shure SM86</li>
+            <li>2 &times; Shure SM94</li>
+            <li>Sennheiser e904</li>
+            <li>2 &times; Sennheiser e609</li>
+            <li>Sennheiser MD409-U3</li>
+            <li>Sennheiser MD421</li>
+            <li>AKG MXL2003</li>
+            <li>2 &times; Rode M5</li>
+            <li>2 &times; AKG C451C</li>
+            <li>AKG C1000 S</li>
+            <li>Aston Original</li>
+          </ul>
+        </div>
+
+        <div class="gear-category">
+          <h3>Plug-In / VST Partners</h3>
+          <ul>
+            <li>Aberrant</li>
+            <li>Waves</li>
+            <li>Wavesfactory</li>
+            <li>Freakshow Industries</li>
+            <li>Spitfire Audio</li>
+            <li>Audiothing</li>
+            <li>ADSR</li>
+            <li>Valhalla</li>
+            <li>SoundeviceDigital</li>
+            <li>KIT</li>
+            <li>Klanghelm</li>
+            <li>Nomad Factory</li>
+          </ul>
+        </div>
+
+        <div class="gear-category">
+          <h3>Pedals</h3>
+          <ul>
+            <li>Boss RE-20 Space Echo</li>
+            <li>Boss DD-6</li>
+            <li>Ibanez Tube Screamer</li>
+            <li>Cusack Screamer</li>
+          </ul>
+        </div>
+
+        <div class="gear-category">
+          <h3>Amps</h3>
+          <ul>
+            <li>Fender Pro Junior</li>
+            <li>Vox AC15</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="section-dark">
+    <div class="container">
+      <h2 class="section-title section-title-light">Gallery</h2>
+    </div>
+    <div class="gallery-scroller">
+
+      <!-- Row 1: Live Room (scroll left) -->
+      <div class="scroll-row" data-direction="left" data-speed="25">
+        <div class="scroll-track">
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LIVE ROOM/LiveRoom1.jpg" alt="Live Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LIVE ROOM/LiveRoom2.jpg" alt="Live Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LIVE ROOM/LiveRoom3.jpg" alt="Live Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LIVE ROOM/LiveRoom4.jpg" alt="Live Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LIVE ROOM/LiveRoom5.jpg" alt="Live Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LIVE ROOM/LiveRoom6.jpg" alt="Live Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LIVE ROOM/LiveRoom7.jpg" alt="Live Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LIVE ROOM/LiveRoom8.jpg" alt="Live Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LIVE ROOM/LiveRoom9.jpg" alt="Live Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LIVE ROOM/LiveRoom10.jpg" alt="Live Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LIVE ROOM/LiveRoom11.jpg" alt="Live Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LIVE ROOM/LiveRoom12.JPG" alt="Live Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LIVE ROOM/LiveRoom13.jpg" alt="Live Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LIVE ROOM/LiveRoom14.jpg" alt="Live Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LIVE ROOM/LiveRoom15.JPG" alt="Live Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LIVE ROOM/LiveRoom16.JPG" alt="Live Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LIVE ROOM/LiveRoom17.jpeg" alt="Live Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LIVE ROOM/LiveRoom18.JPG" alt="Live Room" loading="lazy"></div>
+        </div>
+      </div>
+
+      <!-- Row 2: Exterior + Farmhouse (scroll right) -->
+      <div class="scroll-row" data-direction="right" data-speed="30">
+        <div class="scroll-track">
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext1.JPG" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext2.JPG" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext3.JPG" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext4.JPG" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext5.jpg" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext6.jpg" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext7.JPG" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext8.JPG" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext9.JPG" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext10.JPG" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext11.jpeg" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext12.jpeg" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext13.jpeg" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext14.jpeg" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext15.jpeg" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext16.jpeg" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext17.JPG" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext18.JPG" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext19.JPG" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext20.JPG" alt="Exterior" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/EXTERIOR/Ext21.jpg" alt="Exterior" loading="lazy"></div>
+        </div>
+      </div>
+
+      <!-- Row 3: Control Room + Lounge + Piano Foyer (scroll left) -->
+      <div class="scroll-row" data-direction="left" data-speed="22">
+        <div class="scroll-track">
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/CONTROL ROOM/ControlRoom1.jpeg" alt="Control Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/CONTROL ROOM/ControlRoom2.JPG" alt="Control Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/CONTROL ROOM/ControlRoom3.JPG" alt="Control Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/CONTROL ROOM/ControlRoom4.JPG" alt="Control Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/CONTROL ROOM/ControlRoom5.JPG" alt="Control Room" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LOUNGE/Lounge1.jpg" alt="Lounge" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LOUNGE/Lounge2.jpg" alt="Lounge" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LOUNGE/Lounge3.jpg" alt="Lounge" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LOUNGE/Lounge4.jpg" alt="Lounge" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LOUNGE/Lounge5.jpg" alt="Lounge" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LOUNGE/Lounge6.jpg" alt="Lounge" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LOUNGE/Lounge7.jpeg" alt="Lounge" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LOUNGE/Lounge8.JPG" alt="Lounge" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/LOUNGE/Lounge9.JPG" alt="Lounge" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/PIANO FOYER/Foyer1.jpg" alt="Piano Foyer" loading="lazy"></div>
+        </div>
+      </div>
+
+      <!-- Row 4: Cafe + Greenhouse + Farmhouse + Posters (scroll right) -->
+      <div class="scroll-row" data-direction="right" data-speed="28">
+        <div class="scroll-track">
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/CAFE/14th1.PNG" alt="14th Coffee Co." loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/CAFE/14th2.jpg" alt="14th Coffee Co." loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/CAFE/14th3.jpg" alt="14th Coffee Co." loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/CAFE/14th4.JPG" alt="14th Coffee Co." loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/CAFE/14th5.jpeg" alt="14th Coffee Co." loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/CAFE/14th6.JPG" alt="14th Coffee Co." loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/CAFE/14th8.JPG" alt="14th Coffee Co." loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/CAFE/14th9.JPG" alt="14th Coffee Co." loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/CAFE/14th10.JPG" alt="14th Coffee Co." loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/CAFE/14th11.JPG" alt="14th Coffee Co." loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/CAFE/14th12.JPG" alt="14th Coffee Co." loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/CAFE/14th13.JPG" alt="14th Coffee Co." loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/GREENHOUSE/Greenhouse1.JPG" alt="Greenhouse" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/GREENHOUSE/Greenhouse2.JPG" alt="Greenhouse" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/GREENHOUSE/Greenhouse3.JPG" alt="Greenhouse" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/GREENHOUSE/Greenhouse4.jpg" alt="Greenhouse" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/GREENHOUSE/Greenhouse5.jpg" alt="Greenhouse" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/GREENHOUSE/Greenhouse6.jpeg" alt="Greenhouse" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/GREENHOUSE/Greenhouse7.jpeg" alt="Greenhouse" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/GREENHOUSE/Greenhouse8.JPG" alt="Greenhouse" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/GREENHOUSE/Greenhouse9.JPG" alt="Greenhouse" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/FARMHOUSE/Farmhouse1.JPG" alt="Farmhouse" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/FARMHOUSE/Farmhouse2.jpeg" alt="Farmhouse" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/FARMHOUSE/Farmhouse3.jpeg" alt="Farmhouse" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/FARMHOUSE/Farmhouse4.JPG" alt="Farmhouse" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/FARMHOUSE/Farmhouse5.JPG" alt="Farmhouse" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/FARMHOUSE/Farmhouse6.JPG" alt="Farmhouse" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/FARMHOUSE/Farmhouse7.JPG" alt="Farmhouse" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/FARMHOUSE/Farmhouse8.JPG" alt="Farmhouse" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/FARMHOUSE/Farmhouse9.jpeg" alt="Farmhouse" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/PHOTOS/FARMHOUSE/Farmhouse10.jpeg" alt="Farmhouse" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/POSTERS/Feb152026-Brandys.jpg" alt="The Brandy Alexanders - Feb 15, 2026" loading="lazy"></div>
+          <div class="scroll-item"><img src="../PROMO/POSTERS/March212026-Bilal.jpg" alt="Bilal Nasser - March 21, 2026" loading="lazy"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section-light">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="contact-address">14451 Concession Road 14<br>Essex, Ontario</p>
+          <p><a href="mailto:timeoutofmindrecordingco@gmail.com" class="cta-link">timeoutofmindrecordingco@gmail.com</a></p>
+          <p class="contact-note">A partnership with <strong>14th Coffee Co.</strong></p>
+        </div>
+        <div class="contact-map" id="map"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2025 Time Out Of Mind Recording Co. &mdash; Essex County, Ontario</p>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous">&lsaquo;</button>
+    <button class="lightbox-next" id="lightbox-next" aria-label="Next">&rsaquo;</button>
+    <img src="" alt="" id="lightbox-img">
+  </div>
+
+  <audio id="audio-element" preload="metadata"></audio>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

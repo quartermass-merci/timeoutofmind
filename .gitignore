@@ -1,0 +1,7 @@
+.DS_Store
+.claude/
+AUDIO FILES/
+PROMO/VIDEOS/
+*.wav
+*.mp4
+*.mov
