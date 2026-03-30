@@ -147,7 +147,7 @@
   listenSection.insertBefore(canvas, listenSection.firstChild);
 
   const gl = canvas.getContext('webgl2');
-  if (!gl) return; // No WebGL2 support
+  if (!gl) return;
 
   const vertexSrc = `#version 300 es
 precision highp float;
@@ -215,9 +215,11 @@ void main(){
 
   const resLoc = gl.getUniformLocation(program, 'resolution');
   const timeLoc = gl.getUniformLocation(program, 'time');
+  let animId = null;
+  let isVisible = false;
 
   function resize() {
-    const dpr = Math.min(window.devicePixelRatio, 1.5); // Cap for perf
+    const dpr = Math.min(window.devicePixelRatio, 1);
     const rect = listenSection.getBoundingClientRect();
     canvas.width = rect.width * dpr;
     canvas.height = rect.height * dpr;
@@ -228,6 +230,7 @@ void main(){
   window.addEventListener('resize', resize);
 
   function render(now) {
+    if (!isVisible) { animId = null; return; }
     gl.clearColor(0, 0, 0, 1);
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.useProgram(program);
@@ -235,10 +238,15 @@ void main(){
     gl.uniform2f(resLoc, canvas.width, canvas.height);
     gl.uniform1f(timeLoc, now * 1e-3);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    requestAnimationFrame(render);
+    animId = requestAnimationFrame(render);
   }
 
-  requestAnimationFrame(render);
+  // Only render when the section is visible
+  const smokeObserver = new IntersectionObserver(([entry]) => {
+    isVisible = entry.isIntersecting;
+    if (isVisible && !animId) animId = requestAnimationFrame(render);
+  }, { threshold: 0.05 });
+  smokeObserver.observe(listenSection);
 })();
 
 
@@ -317,7 +325,7 @@ void main(){
 
 /* ===== SCROLL REVEAL ===== */
 (function() {
-  const revealElements = document.querySelectorAll('#listen .section-title, #watch .section-title, #about .section-title, #rates .section-title, #gear .section-title, #gallery .section-title, #contact .section-title, .rate-card, .gear-quotes blockquote, .gear-category, .rates-remember, .rates-extras, .contact-info, .contact-map, .video-item, #about p');
+  const revealElements = document.querySelectorAll('#listen .section-title, #watch .section-title, #about .section-title, #rates .section-title, #gear .section-title, #gallery .section-title, #contact .section-title, .rate-card, .gear-category, .rates-remember, .rates-extras, .contact-info, .contact-map, .video-item, .about-text p, .about-photo, .gear-photo, .section-coda p');
 
   revealElements.forEach(el => el.classList.add('reveal'));
 
@@ -338,8 +346,8 @@ void main(){
   document.querySelectorAll('.gear-category').forEach((cat, i) => {
     cat.style.transitionDelay = (i * 0.08) + 's';
   });
-  document.querySelectorAll('.gear-quotes blockquote').forEach((q, i) => {
-    q.style.transitionDelay = (i * 0.15) + 's';
+  document.querySelectorAll('.section-coda p').forEach((p, i) => {
+    p.style.transitionDelay = (i * 0.15) + 's';
   });
 })();
 
