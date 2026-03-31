@@ -534,12 +534,16 @@ h2, h3, .nav-logo {
 }
 
 .audio-player.entering .track-list li:nth-child(1) { animation-delay: 0.5s; }
-.audio-player.entering .track-list li:nth-child(2) { animation-delay: 0.58s; }
-.audio-player.entering .track-list li:nth-child(3) { animation-delay: 0.66s; }
-.audio-player.entering .track-list li:nth-child(4) { animation-delay: 0.74s; }
-.audio-player.entering .track-list li:nth-child(5) { animation-delay: 0.82s; }
-.audio-player.entering .track-list li:nth-child(6) { animation-delay: 0.90s; }
-.audio-player.entering .track-list li:nth-child(7) { animation-delay: 0.98s; }
+.audio-player.entering .track-list li:nth-child(2) { animation-delay: 0.56s; }
+.audio-player.entering .track-list li:nth-child(3) { animation-delay: 0.62s; }
+.audio-player.entering .track-list li:nth-child(4) { animation-delay: 0.68s; }
+.audio-player.entering .track-list li:nth-child(5) { animation-delay: 0.74s; }
+.audio-player.entering .track-list li:nth-child(6) { animation-delay: 0.80s; }
+.audio-player.entering .track-list li:nth-child(7) { animation-delay: 0.86s; }
+.audio-player.entering .track-list li:nth-child(8) { animation-delay: 0.92s; }
+.audio-player.entering .track-list li:nth-child(9) { animation-delay: 0.98s; }
+.audio-player.entering .track-list li:nth-child(10) { animation-delay: 1.04s; }
+.audio-player.entering .track-list li:nth-child(11) { animation-delay: 1.10s; }
 
 @keyframes player-fade-up {
   from {
