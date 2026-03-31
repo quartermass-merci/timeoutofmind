@@ -493,25 +493,3 @@ void main(){
   `).openPopup();
 })();
 
-/* ===== BOOKING MAILTO (built via JS to avoid HTML encoding issues) ===== */
-(function() {
-  document.querySelectorAll('.rate-cta[data-package]').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      var pkg = btn.getAttribute('data-package');
-      var desc = btn.getAttribute('data-desc');
-      var extra = btn.getAttribute('data-extra') || '';
-      var subject = 'Booking Inquiry - ' + pkg + ' Package';
-      var body = 'Hi TOOMRC,\n\n' +
-        "I'm interested in the " + pkg + ' package (' + desc + ').\n\n' +
-        'Band/Artist name:\n' +
-        'Preferred dates:\n' +
-        'Project details:\n' +
-        (extra ? extra.replace(/\\n/g, '\n') + '\n' : '') +
-        '\nThanks!';
-      window.location.href = 'mailto:timeoutofmindrecordingco@gmail.com' +
-        '?subject=' + encodeURIComponent(subject) +
-        '&body=' + encodeURIComponent(body);
-    });
-  });
-})();
