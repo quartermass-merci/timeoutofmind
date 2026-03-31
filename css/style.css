@@ -402,6 +402,14 @@ h2, h3, .nav-logo {
 .player-gate {
   text-align: center;
   padding: clamp(40px, 6vw, 72px) 0;
+  position: relative;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.player-gate.unlocking {
+  opacity: 0;
+  transform: scale(0.96);
+  pointer-events: none;
 }
 
 .player-gate.unlocked {
@@ -434,7 +442,7 @@ h2, h3, .nav-logo {
   border-radius: 0;
   outline: none;
   flex: 1;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .gate-input:focus {
@@ -444,6 +452,12 @@ h2, h3, .nav-logo {
 .gate-input::placeholder {
   color: var(--smoke);
   opacity: 0.6;
+}
+
+/* Success flash on correct password */
+.gate-input.success {
+  border-color: var(--amber);
+  box-shadow: 0 0 20px rgba(196, 149, 106, 0.4), 0 0 60px rgba(196, 149, 106, 0.15);
 }
 
 .gate-btn {
@@ -456,12 +470,18 @@ h2, h3, .nav-logo {
   background: transparent;
   color: var(--amber);
   cursor: pointer;
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
 .gate-btn:hover {
   background: var(--amber);
   color: var(--night);
+}
+
+.gate-btn.success {
+  background: var(--amber);
+  color: var(--night);
+  box-shadow: 0 0 24px rgba(196, 149, 106, 0.5);
 }
 
 .gate-error {
@@ -477,9 +497,99 @@ h2, h3, .nav-logo {
   opacity: 1;
 }
 
+/* Wrong password shake */
+@keyframes gate-shake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-8px); }
+  30% { transform: translateX(6px); }
+  45% { transform: translateX(-4px); }
+  60% { transform: translateX(2px); }
+}
+
+.gate-form.shake {
+  animation: gate-shake 0.5s ease-out;
+}
+
 /* Player hidden until unlocked */
 .audio-player.locked {
   display: none;
+}
+
+/* Player entrance after unlock */
+.audio-player.entering .player-now-playing {
+  animation: player-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.audio-player.entering .player-controls {
+  animation: player-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+}
+
+.audio-player.entering .player-progress-wrap,
+.audio-player.entering .player-time {
+  animation: player-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+}
+
+.audio-player.entering .track-list li {
+  animation: track-slide-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.audio-player.entering .track-list li:nth-child(1) { animation-delay: 0.5s; }
+.audio-player.entering .track-list li:nth-child(2) { animation-delay: 0.58s; }
+.audio-player.entering .track-list li:nth-child(3) { animation-delay: 0.66s; }
+.audio-player.entering .track-list li:nth-child(4) { animation-delay: 0.74s; }
+.audio-player.entering .track-list li:nth-child(5) { animation-delay: 0.82s; }
+.audio-player.entering .track-list li:nth-child(6) { animation-delay: 0.90s; }
+.audio-player.entering .track-list li:nth-child(7) { animation-delay: 0.98s; }
+
+@keyframes player-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes track-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Warm glow pulse behind player on unlock */
+@keyframes unlock-glow {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3);
+  }
+  50% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.5);
+  }
+}
+
+.player-unlock-glow {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--amber) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  animation: unlock-glow 1.4s ease-out forwards;
 }
 
 /* ===== AUDIO PLAYER ===== */

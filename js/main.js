@@ -77,14 +77,42 @@
     var digest = await sha256(input.value);
     if (digest === HASH) {
       sessionStorage.setItem('toomrc-unlocked', '1');
-      gate.classList.add('unlocked');
-      player.classList.remove('locked');
-      // Force reveal animation on the now-visible player
-      player.classList.add('visible');
+
+      // 1. Success flash on input + button
+      input.classList.add('success');
+      document.querySelector('.gate-btn').classList.add('success');
+
+      // 2. After a beat, start the unlock sequence
+      setTimeout(function() {
+        // Fade out the gate
+        gate.classList.add('unlocking');
+
+        // Spawn warm glow behind player
+        var glow = document.createElement('div');
+        glow.className = 'player-unlock-glow';
+        document.getElementById('listen').appendChild(glow);
+
+        // After gate fades, reveal the player with staggered entrance
+        setTimeout(function() {
+          gate.classList.add('unlocked');
+          player.classList.remove('locked');
+          player.classList.add('visible', 'entering');
+
+          // Clean up glow after animation
+          setTimeout(function() {
+            if (glow.parentNode) glow.parentNode.removeChild(glow);
+            player.classList.remove('entering');
+          }, 2000);
+        }, 500);
+      }, 400);
+
     } else {
+      // Shake the form on wrong password
+      form.classList.add('shake');
       error.classList.add('visible');
       input.value = '';
       input.focus();
+      setTimeout(function() { form.classList.remove('shake'); }, 500);
     }
   });
 })();
