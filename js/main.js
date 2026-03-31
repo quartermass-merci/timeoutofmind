@@ -47,7 +47,7 @@
 
 /* ===== PLAYER PASSWORD GATE ===== */
 (function() {
-  var HASH = 'eea88569bf8c343040de44a47f29739633ae3735e36fb28afe4b560ee1de2192';
+  var HASH = 'c153d60ae29ef1a1577a09285cece714e80f02904eb9a244e92d60d199901b9c';
   var gate = document.getElementById('player-gate');
   var form = document.getElementById('gate-form');
   var input = document.getElementById('gate-input');
