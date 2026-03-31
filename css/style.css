@@ -398,6 +398,90 @@ h2, h3, .nav-logo {
   height: clamp(240px, 35vw, 440px);
 }
 
+/* ===== PLAYER PASSWORD GATE ===== */
+.player-gate {
+  text-align: center;
+  padding: clamp(40px, 6vw, 72px) 0;
+}
+
+.player-gate.unlocked {
+  display: none;
+}
+
+.gate-label {
+  font-family: 'Special Elite', monospace;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  color: var(--smoke);
+  margin-bottom: 28px;
+  letter-spacing: 0.02em;
+}
+
+.gate-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.gate-input {
+  font-family: 'Courier Prime', monospace;
+  font-size: 1rem;
+  padding: 12px 16px;
+  border: 1px solid var(--smoke);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--parchment);
+  border-radius: 0;
+  outline: none;
+  flex: 1;
+  transition: border-color 0.3s;
+}
+
+.gate-input:focus {
+  border-color: var(--amber);
+}
+
+.gate-input::placeholder {
+  color: var(--smoke);
+  opacity: 0.6;
+}
+
+.gate-btn {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 12px 24px;
+  border: 1px solid var(--amber);
+  background: transparent;
+  color: var(--amber);
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.gate-btn:hover {
+  background: var(--amber);
+  color: var(--night);
+}
+
+.gate-error {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.85rem;
+  color: var(--sunset-coral);
+  margin-top: 16px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.gate-error.visible {
+  opacity: 1;
+}
+
+/* Player hidden until unlocked */
+.audio-player.locked {
+  display: none;
+}
+
 /* ===== AUDIO PLAYER ===== */
 #listen {
   position: relative;

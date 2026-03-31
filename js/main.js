@@ -45,6 +45,50 @@
 })();
 
 
+/* ===== PLAYER PASSWORD GATE ===== */
+(function() {
+  var HASH = 'eea88569bf8c343040de44a47f29739633ae3735e36fb28afe4b560ee1de2192';
+  var gate = document.getElementById('player-gate');
+  var form = document.getElementById('gate-form');
+  var input = document.getElementById('gate-input');
+  var error = document.getElementById('gate-error');
+  var player = document.getElementById('audio-player');
+
+  if (!gate || !player) return;
+
+  // Check if already unlocked this session
+  if (sessionStorage.getItem('toomrc-unlocked') === '1') {
+    gate.classList.add('unlocked');
+  } else {
+    player.classList.add('locked');
+  }
+
+  async function sha256(str) {
+    var buf = new TextEncoder().encode(str);
+    var hash = await crypto.subtle.digest('SHA-256', buf);
+    return Array.from(new Uint8Array(hash)).map(function(b) {
+      return b.toString(16).padStart(2, '0');
+    }).join('');
+  }
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    error.classList.remove('visible');
+    var digest = await sha256(input.value);
+    if (digest === HASH) {
+      sessionStorage.setItem('toomrc-unlocked', '1');
+      gate.classList.add('unlocked');
+      player.classList.remove('locked');
+      // Force reveal animation on the now-visible player
+      player.classList.add('visible');
+    } else {
+      error.classList.add('visible');
+      input.value = '';
+      input.focus();
+    }
+  });
+})();
+
 /* ===== AUDIO PLAYER ===== */
 (function() {
   const audio = document.getElementById('audio-element');

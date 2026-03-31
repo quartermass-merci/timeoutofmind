@@ -77,6 +77,17 @@
   <section id="listen" class="section-dark">
     <div class="container">
       <h2 class="section-title section-title-light reveal">Songs Recorded at Time Out of Mind Recording Co.</h2>
+
+      <!-- Password gate -->
+      <div class="player-gate" id="player-gate">
+        <p class="gate-label">This player contains unreleased material.</p>
+        <form class="gate-form" id="gate-form" autocomplete="off">
+          <input type="password" class="gate-input" id="gate-input" placeholder="Enter password" autocomplete="off">
+          <button type="submit" class="gate-btn">Unlock &rarr;</button>
+        </form>
+        <p class="gate-error" id="gate-error">Incorrect password</p>
+      </div>
+
       <div class="audio-player reveal" id="audio-player">
         <div class="player-now-playing" id="now-playing">Select a track</div>
         <div class="player-controls">
