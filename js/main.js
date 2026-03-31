@@ -134,6 +134,38 @@
   let currentIndex = -1;
   let isPlaying = false;
 
+  // Shuffle: create a randomized play order
+  let shuffleOrder = [];
+  let shufflePos = -1;
+
+  function buildShuffleOrder() {
+    shuffleOrder = tracks.map(function(_, i) { return i; });
+    for (var i = shuffleOrder.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = shuffleOrder[i];
+      shuffleOrder[i] = shuffleOrder[j];
+      shuffleOrder[j] = tmp;
+    }
+    shufflePos = -1;
+  }
+
+  function nextShuffled() {
+    shufflePos++;
+    if (shufflePos >= shuffleOrder.length) {
+      buildShuffleOrder();
+      shufflePos = 0;
+    }
+    return shuffleOrder[shufflePos];
+  }
+
+  function prevShuffled() {
+    shufflePos--;
+    if (shufflePos < 0) shufflePos = shuffleOrder.length - 1;
+    return shuffleOrder[shufflePos];
+  }
+
+  buildShuffleOrder();
+
   function formatTime(s) {
     if (isNaN(s)) return '0:00';
     const m = Math.floor(s / 60);
@@ -152,7 +184,7 @@
   }
 
   function play() {
-    if (currentIndex === -1) loadTrack(0);
+    if (currentIndex === -1) loadTrack(nextShuffled());
     audio.play();
     isPlaying = true;
     playBtn.innerHTML = '&#10074;&#10074;';
@@ -171,20 +203,21 @@
   playBtn.addEventListener('click', () => isPlaying ? pause() : play());
 
   prevBtn.addEventListener('click', () => {
-    const idx = currentIndex <= 0 ? tracks.length - 1 : currentIndex - 1;
-    loadTrack(idx);
+    loadTrack(prevShuffled());
     if (isPlaying) audio.play();
   });
 
   nextBtn.addEventListener('click', () => {
-    const idx = currentIndex >= tracks.length - 1 ? 0 : currentIndex + 1;
-    loadTrack(idx);
+    loadTrack(nextShuffled());
     if (isPlaying) audio.play();
   });
 
   tracks.forEach((track, i) => {
     track.addEventListener('click', () => {
       loadTrack(i);
+      // Rebuild shuffle from this point so next/prev work naturally
+      buildShuffleOrder();
+      shufflePos = shuffleOrder.indexOf(i);
       play();
     });
   });
@@ -200,8 +233,7 @@
   });
 
   audio.addEventListener('ended', () => {
-    const idx = currentIndex >= tracks.length - 1 ? 0 : currentIndex + 1;
-    loadTrack(idx);
+    loadTrack(nextShuffled());
     play();
   });
 

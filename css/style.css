@@ -542,8 +542,6 @@ h2, h3, .nav-logo {
 .audio-player.entering .track-list li:nth-child(7) { animation-delay: 0.86s; }
 .audio-player.entering .track-list li:nth-child(8) { animation-delay: 0.92s; }
 .audio-player.entering .track-list li:nth-child(9) { animation-delay: 0.98s; }
-.audio-player.entering .track-list li:nth-child(10) { animation-delay: 1.04s; }
-.audio-player.entering .track-list li:nth-child(11) { animation-delay: 1.10s; }
 
 @keyframes player-fade-up {
   from {
