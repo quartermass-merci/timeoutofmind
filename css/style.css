@@ -544,6 +544,14 @@ h2, h3, .nav-logo {
 .audio-player.entering .track-list li:nth-child(9) { animation-delay: 0.98s; }
 .audio-player.entering .track-list li:nth-child(10) { animation-delay: 1.04s; }
 .audio-player.entering .track-list li:nth-child(11) { animation-delay: 1.10s; }
+.audio-player.entering .track-list li:nth-child(12) { animation-delay: 1.16s; }
+.audio-player.entering .track-list li:nth-child(13) { animation-delay: 1.22s; }
+.audio-player.entering .track-list li:nth-child(14) { animation-delay: 1.28s; }
+.audio-player.entering .track-list li:nth-child(15) { animation-delay: 1.34s; }
+.audio-player.entering .track-list li:nth-child(16) { animation-delay: 1.40s; }
+.audio-player.entering .track-list li:nth-child(17) { animation-delay: 1.46s; }
+.audio-player.entering .track-list li:nth-child(18) { animation-delay: 1.52s; }
+.audio-player.entering .track-list li:nth-child(19) { animation-delay: 1.58s; }
 
 @keyframes player-fade-up {
   from {
